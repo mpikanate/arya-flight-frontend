@@ -1,4 +1,43 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Arya Flight CMS!!</p>
+<!-- <h1>Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in with Arya Flight CMS!!</p> -->
+<!-- <a [routerLink]="['/admin/login']">Logout</a> -->
+<!-- Container for sidebar(s) + page content -->
 
-<p><a [routerLink]="['/admin/login']">Logout</a></p>
+<ng-sidebar-container (onBackdropClicked)="_onBackdropClicked()" style="height: 100vh;">
+    <ng-sidebar [(opened)]="_opened" [mode]="_mode" [keyClose]="_keyClose" [position]="_position" [dock]="_dock"
+        [dockedSize]="'50px'" [autoCollapseHeight]="_autoCollapseHeight" [autoCollapseWidth]="_autoCollapseWidth"
+        [closeOnClickOutside]="_closeOnClickOutside" [closeOnClickBackdrop]="_closeOnClickBackdrop" [showBackdrop]="_showBackdrop"
+        [animate]="_animate" [trapFocus]="_trapFocus" [autoFocus]="_autoFocus" [sidebarClass]="'menu-sidebar'"
+        [ariaLabel]="'Menu Sidebar'">
+        <div id="sidebar-menu" style="background: #009A42; color:#fff;">
+            <br/>
+            <p class="text-center"><button class="demo-control" (click)="_toggleOpened()" style="color:#000; margin : 10px;">Close sidebar</button></p>
+            <br/>
+            <ul class="list-menu">
+                <li><a style="color:#fff;" href="/admin">Dashboard</a></li>
+                <li><a style="color:#fff;" href="/admin/create-flight">Create Flight</a></li>
+                <li>menu 2</li>
+            </ul>
+            <br/>
+            <p class="text-center" ><a style="color:#fff;" [routerLink]="['/admin/login']">Logout</a></p>
+            <br/>
+        </div>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+        <header class="demo-header">
+            <div class="col-sm-2 text-left">
+                <button (click)="_toggleOpened()" class="demo-header__toggle">Toggle sidebar</button>
+            </div>
+            <div class="col-sm-8 text-center">
+                <h2>ARYA FLIGHT ADMIN</h2>
+            </div>
+            <div class="col-sm-2 text-right">
+                <a [routerLink]="['/admin/login']" style="color:#fff;">Logout</a>
+            </div>
+        </header>
+        <section class="demo-contents">
+            <!-- <h1>Contents are here</h1> -->
+            <router-outlet></router-outlet>
+        </section>
+    </div>
+</ng-sidebar-container>

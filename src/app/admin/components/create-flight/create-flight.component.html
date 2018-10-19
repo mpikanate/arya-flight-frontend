@@ -1,0 +1,22 @@
+<div id="arya">
+  <br />
+  <form [formGroup]="createFlightForm">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-xs-offset-2 col-md-6 col-md-offset-3">
+        <div class="form-group">
+          <label for="flightNo">Flight No</label>
+          <input formControlName="flightNo" type="text" class="form-control" placeholder="Enter Flight Name">
+          <small id="flightName" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <daterangepicker (dateValue)="myDate1=$event" [singleDatePicker]="true" [autoApply]="false"
+            [defaultDateValue]="false" (dateValue)="myDate1=$event" (cancelDaterangepicker)="cancelPicker($event)">
+          </daterangepicker>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary" (click)="createFlightSubmit()">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

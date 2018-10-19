@@ -1,0 +1,6 @@
+<div class="input-group  daterangepicker-input-container">
+  <input #daterangepickerEl [id]="id" type="text" [options]="options"
+  (selected)="selectedDate($event, daterange)" (cancelDaterangepicker)="calendarCanceled($event)" class="form-control"
+  [disabled]="disabled" [ngStyle]="{'background-color': disabled ? '#eeeeee !important' : '', 'cursor': disabled ? 'not-allowed' : ''}" daterangepicker/>
+  <span  class="input-group-addon"><i class="fa fa-calendar"></i></span>
+</div>

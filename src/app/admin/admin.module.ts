@@ -10,6 +10,11 @@ import { AlertService, AuthenticationService, UserService } from '../_services';
 import { JwtInterceptor, ErrorInterceptor } from '../_helpers';
 import { AlertComponent } from '../_directives';
 import { RegisterComponent } from './components/register/register.component';
+import { SidebarModule } from 'ng-sidebar';
+import { CreateFlightComponent } from './components/create-flight/create-flight.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DaterangepickerComponent } from '../lib/daterangepicker/daterangepicker.component';
+import { LibModule } from '../lib/lib.module';
 
 @NgModule({
   imports: [
@@ -17,12 +22,16 @@ import { RegisterComponent } from './components/register/register.component';
     AdminRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SidebarModule.forRoot(),
+    LibModule
   ],
   declarations: [
     LoginComponent,
     HomeComponent,
     AlertComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateFlightComponent,
+    DashboardComponent
   ],
   providers: [
     AuthGuard,
@@ -31,6 +40,7 @@ import { RegisterComponent } from './components/register/register.component';
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    DaterangepickerComponent
 
     // provider used to create fake backend
     // fakeBackendProvider

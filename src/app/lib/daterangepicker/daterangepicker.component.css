@@ -1,0 +1,20 @@
+.daterangepicker-input-container{
+    position: relative;
+}
+div.daterangepicker-input-container input{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 0 !important;
+    background-color: white !important;
+}
+div.daterangepicker-input-container input:hover{
+    cursor: pointer;
+}
+
+.daterangepicker.dropdown-menu {
+    font-size: 20px !important;
+}
+
+.daterangepicker {
+    font-family: sans-serif !important;
+}

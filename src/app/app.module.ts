@@ -8,23 +8,27 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common
 import { AppComponent } from './app.component';
 import { AlertService, AuthenticationService } from './_services';
 import { AuthGuard } from './_guards';
+import { LibModule } from './lib/lib.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
-    BrowserModule ,
-     BrowserAnimationsModule,
-     FormsModule,
-     ReactiveFormsModule,
-     HttpClientModule,
-     AppRoutingModule,
-   ],
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    LibModule
+  ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
+  ], 
+  exports: [
   ],
   bootstrap: [AppComponent]
 })
