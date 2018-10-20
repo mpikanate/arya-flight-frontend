@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   users: User[] = [];
 
   //ng-sidebar
-  private _opened: boolean = true;
+  private _opened: boolean = false;
   private _modeNum: number = 0;
   private _positionNum: number = 0;
   private _dock: boolean = false;

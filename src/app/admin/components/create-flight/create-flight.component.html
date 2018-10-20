@@ -3,19 +3,63 @@
   <form [formGroup]="createFlightForm">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-xs-offset-2 col-md-6 col-md-offset-3">
+
+        <!-- Flight No -->
         <div class="form-group">
-          <label for="flightNo">Flight No</label>
-          <input formControlName="flightNo" type="text" class="form-control" placeholder="Enter Flight Name">
-          <small id="flightName" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <label for="flightNo">Flight No <span style="color:red">*</span></label>
+          <input id="createFlight_flightNo" formControlName="flightNo" type="text" class="form-control" placeholder="Enter Flight No">
         </div>
+
+        <!-- Origin -->
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <daterangepicker (dateValue)="myDate1=$event" [singleDatePicker]="true" [autoApply]="false"
-            [defaultDateValue]="false" (dateValue)="myDate1=$event" (cancelDaterangepicker)="cancelPicker($event)">
+          <label for="origin">Origin <span style="color:red">*</span></label>
+          <input id="createFlight_origin" formControlName="origin" type="text" class="form-control" placeholder="Enter Origin">
+        </div>
+
+        <!-- Departure time -->
+        <div class="form-group">
+          <label for="departureTime">Departure Time <span style="color:red">*</span></label>
+          <daterangepicker id="createFlight_departureTime" (dateValue)="setDepartureTime($event)" [singleDatePicker]="true"
+            [timePicker]="true" [format]="'DD/MM/YYYY HH:mm'" [autoApply]="true" [startDate]="createFlightForm?.controls['departureTime'].value"
+            #departureTimePicker>
           </daterangepicker>
         </div>
+
+        <!-- Destination -->
+        <div class="form-group">
+          <label for="destination">Destination <span style="color:red">*</span></label>
+          <input id="createFlight_destination" formControlName="destination" type="text" class="form-control"
+            placeholder="Enter Destination">
+        </div>
+
+        <!-- Arrival time -->
+        <div class="form-group">
+          <label for="arrivalTime">Arrival Time <span style="color:red">*</span></label>
+          <daterangepicker id="createFlight_arrivalTime" (dateValue)="setArrivalTime($event)" [singleDatePicker]="true"
+            [timePicker]="true" [format]="'DD/MM/YYYY HH:mm'" [autoApply]="true" [startDate]="createFlightForm?.controls['arrivalTime'].value"
+            #arrivalTimePicker>
+          </daterangepicker>
+        </div>
+
+        <!-- Type -->
+        <div class="form-group">
+          <label for="type">Type <span style="color:red">*</span></label>
+          <select id="createFlight_type" class="form-control" formControlName="type">
+            <!-- <option value="">Please Select</option> -->
+            <option *ngFor="let el of typeList" value="{{el.value}}">{{el.label}}</option>
+          </select>
+        </div>
+
+        <!-- Remark -->
+        <div class="form-group">
+          <label for="type">Remark </label>
+          <textarea id="createFlight_remark" class="form-control " rows="2" formControlName="remark" [maxlength]="255"
+            placeholder="limit 255 chars"></textarea>
+        </div>
         <br />
-        <button type="submit" class="btn btn-primary" (click)="createFlightSubmit()">Submit</button>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary" (click)="createFlightSubmit()">Submit</button>
+        </div>
       </div>
     </div>
   </form>
